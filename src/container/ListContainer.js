@@ -18,18 +18,14 @@ class List extends React.Component{
 
     getDate(event){
         this.task.date = event.target.value
-        console.log("date",this.task)
-
     }
 
     getTaskName(event){
         this.task.taskName = event.target.value
-        console.log("taskName",this.task)
     }
 
     getDescription(event){
         this.task.description = event.target.value
-        console.log("description",this.task)
     }
 
     addTask(){
@@ -47,12 +43,12 @@ class List extends React.Component{
     render(){
         return(
             <>
-                <ViewActivity output={this.state.task}></ViewActivity>
                 <AddActivity Date={this.getDate.bind(this)}
                 eventName = {this.getTaskName.bind(this)}
                 eventDesc = {this.getDescription.bind(this)}
                 add={this.addTask.bind(this)}
                 ></AddActivity>
+                <ViewActivity output={this.state.task}></ViewActivity>
             </>
         )
     }
