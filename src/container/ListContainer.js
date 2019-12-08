@@ -2,14 +2,22 @@ import React from 'react'
 import { ViewActivity } from '../components/ViewToDoList'
 import { AddActivity } from '../components/CreateList'
 
+class task{
+    constructor(date,taskName,description){
+        this.date = date
+        this.taskName = taskName
+        this.description = description
+    }
+}
+
 class List extends React.Component{
     constructor(props){
         super(props)
-        this.task = {
-            date: "",
-            taskName: "",
-            description : ""
-        }
+        // this.task = {
+            this._date = ""
+            this._taskName = ""
+            this._description = ""
+        // }
         this.taskList = []
         this.state = {
             task : this.taskList
@@ -17,20 +25,22 @@ class List extends React.Component{
     }
 
     getDate(event){
-        this.task.date = event.target.value
+        this._date = event.target.value
     }
 
     getTaskName(event){
-        this.task.taskName = event.target.value
+        this._taskName = event.target.value
     }
 
     getDescription(event){
-        this.task.description = event.target.value
+        this._description = event.target.value
     }
 
     addTask(){
-        if(this.task.date !== "" && this.task.taskName !== "" && this.task.description !== ""){
-            this.taskList.push(this.task)
+        if(this._date !== "" && this._taskName !== "" && this._description !== ""){
+            var newTask = new task(this._date,this._taskName,this._description)
+            console.log("New Task",newTask)
+            this.taskList.push(newTask)
             this.setState({
                 task : this.taskList
             }, ()=>{console.log("Final Output",this.state)})
@@ -38,7 +48,6 @@ class List extends React.Component{
             alert("please enter values")
         }
     }
-
 
     render(){
         return(
